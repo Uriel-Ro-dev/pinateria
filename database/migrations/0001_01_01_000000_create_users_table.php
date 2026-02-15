@@ -13,10 +13,18 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            // Campos personalizados de tu tabla 'usuarios'
+            $table->string('nombre');
+            $table->string('apellido');
+            $table->string('email')->unique(); // Laravel usa 'email' por defecto, te sugiero mantenerlo sobre 'correo'
             $table->string('password');
+            $table->string('rol')->default('cliente'); // Agregamos un valor por defecto para evitar errores
+            $table->string('telefono')->nullable();    // 'nullable' permite que el campo quede vacío si quieres
+            $table->string('domicilio')->nullable();
+            $table->string('status')->default('activo');
+
+            // Campos de seguridad necesarios para Laravel
+            $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

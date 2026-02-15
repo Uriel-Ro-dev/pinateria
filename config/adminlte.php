@@ -327,6 +327,41 @@ return [
             'label' => 4,
             'label_color' => 'success',
         ],
+        // Sección de Piñatas
+        [
+            'text' => 'Piñatas',
+            'icon' => 'fas fa-fw fa-gifts', // Icono de regalo/piñata
+            'submenu' => [
+                [
+                    'text' => 'Listar Inventario',
+                    'route' => 'pinatas.index',
+                    'icon' => 'fas fa-fw fa-list',
+                ],
+                [
+                    'text' => 'Agregar Nueva',
+                    'route' => 'pinatas.create',
+                    'icon' => 'fas fa-fw fa-plus-circle',
+                ],
+            ],
+        ],
+
+        // Sección de Categorías
+        [
+            'text' => 'Categorías',
+            'icon' => 'fas fa-fw fa-tags', // Icono de etiquetas
+            'submenu' => [
+                [
+                    'text' => 'Ver Categorías',
+                    'route' => 'categorias.index',
+                    'icon' => 'fas fa-fw fa-clipboard-list',
+                ],
+                [
+                    'text' => 'Crear Categoría',
+                    'route' => 'categorias.create',
+                    'icon' => 'fas fa-fw fa-folder-plus',
+                ],
+            ],
+        ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
