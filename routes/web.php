@@ -25,3 +25,18 @@ Route::get('/delete-categoria/{id}', [
     'middleware' => 'auth',
     'uses' => 'App\Http\Controllers\CategoriaController@destroy'
 ]);
+
+Route::get('inventarioPDF',[App\Http\Controllers\GeneradorController::class, 'imprimirInventario'])->name('imprimirInventario');
+
+Route::get('registroVentasPDF', [App\Http\Controllers\GeneradorController::class, 'registroVentas'])->name('ventas.pdf');
+
+Route::resource('asset', App\Http\Controllers\AssetController::class)->middleware('auth');
+
+Route::get('/video-file/{filename}', array(
+   'as' => 'fileVideo',
+   'uses' => 'App\Http\Controllers\AssetController@getVideo'
+));
+Route::get('/miniatura/{filename}', array(
+   'as' => 'imageVideo',
+   'uses' => 'App\Http\Controllers\AssetController@getImage'
+));
