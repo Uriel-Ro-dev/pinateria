@@ -24,32 +24,65 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="mx-auto" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <!-- Menú centrado -->
+    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+            <a class="nav-link active" href="#">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Nosotros</a>
+            <a class="nav-link" href="#">Nosotros</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Tienda
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Catálogo</a></li>
-            <li><a class="dropdown-item" href="#">Combos</a></li>
-            <li><a class="dropdown-item" href="#">Personalizadas</a></li>
-            <li><a class="dropdown-item" href="#">Cursos</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Carrito</a></li>
-          </ul>
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                Tienda
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Catálogo</a></li>
+                <li><a class="dropdown-item" href="#">Combos</a></li>
+                <li><a class="dropdown-item" href="#">Personalizadas</a></li>
+                <li><a class="dropdown-item" href="#">Cursos</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Carrito</a></li>
+            </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contacto</a>
+            <a class="nav-link" href="#">Contacto</a>
         </li>
-      </ul>
-    </div>
+    </ul>
+
+    <!-- Login pegado a la derecha -->
+    <ul class="navbar-nav ms-auto">
+        @guest
+            <li class="nav-item">
+                <a class="nav-link fw-bold" href="{{ route('login') }}">
+                    Iniciar Sesión
+                </a>
+            </li>
+        @endguest
+
+        @auth
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle fw-bold" href="#" data-bs-toggle="dropdown">
+                    {{ Auth::user()->nombre }}
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="dropdown-item">
+                                Cerrar Sesión
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </li>
+        @endauth
+    </ul>
+
+</div>
+
   </div>
 </nav>
 
