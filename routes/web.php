@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CorreoController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -40,3 +41,5 @@ Route::get('/miniatura/{filename}', array(
    'as' => 'imageVideo',
    'uses' => 'App\Http\Controllers\AssetController@getImage'
 ));
+
+Route::get('/correo-prueba', [CorreoController::class, 'enviarPrueba']);
