@@ -18,7 +18,7 @@ return new class extends Migration
             $table->decimal('precio');
             $table->integer('stock');
             $table->string('material');
-            $table->foreignId('categoria_id');
+            $table->foreignId('categoria_id')->constrained('categorias');
             $table->string('imagen_url')->nullable();
             $table->boolean('activo')->default(true);
             $table->timestamps();

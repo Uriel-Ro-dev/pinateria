@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('compras', function (Blueprint $table) {
+        Schema::create('resenas', function (Blueprint $table) {
             $table->id();
-            $table->string('folio_compra');
-            $table->dateTime('fecha_registro');
-            $table->decimal('total_compra', 10, 2);
-            $table->string('metodo_pago');
-            $table->foreignId('usuario_id')->constrained('users');
+            $table->integer('estrellas');
+            $table->text('comentario');
+            $table->datetime('fecha');
+            $table->foreignId('usuario_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('pinata_id')->constrained('pinatas')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('compras');
+        Schema::dropIfExists('resenas');
     }
 };
