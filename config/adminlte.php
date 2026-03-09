@@ -320,13 +320,25 @@ return [
             'url' => 'admin/blog',
             'can' => 'manage-blog',
         ],
+        
+        // Sección de Usuarios
         [
-            'text' => 'pages',
-            'url' => 'admin/pages',
-            'icon' => 'far fa-fw fa-file',
-            'label' => 4,
-            'label_color' => 'success',
+            'text' => 'Usuarios',
+            'icon' => 'fas fa-fw fa-users-cog', // Icono de gestión de usuarios
+            'submenu' => [
+                [
+                    'text' => 'Listar Usuarios',
+                    'route' => 'usuarios.index',
+                    'icon' => 'fas fa-fw fa-users',
+                ],
+                [
+                    'text' => 'Registrar Nuevo',
+                    'route' => 'usuarios.create',
+                    'icon' => 'fas fa-fw fa-user-plus',
+                ],
+            ],
         ],
+
         // Sección de Piñatas
         [
             'text' => 'Piñatas',
