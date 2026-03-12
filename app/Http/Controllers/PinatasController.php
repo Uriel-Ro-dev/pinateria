@@ -135,7 +135,8 @@ class PinatasController extends Controller
             'stock'        => 'required|integer|min:0',
             'material'     => 'nullable|string',
             'categoria_id' => 'required|exists:categorias,id', // Verifica que la categoría exista
-            'imagen_url'   => 'nullable|string'
+            'imagen_url'   => 'nullable|string',
+            'activo' => 'required|boolean'
         ]);
 
         // 2. Buscar la piñata por ID usando el modelo correcto
@@ -149,6 +150,7 @@ class PinatasController extends Controller
         $pinata->material     = $request->input('material');
         $pinata->categoria_id = $request->input('categoria_id');
         $pinata->imagen_url   = $request->input('imagen_url');
+        $pinata->activo       = $request->input('activo');
 
         // 4. Guardar los cambios en la base de datos
         $pinata->save();

@@ -67,6 +67,21 @@
                 <input type="text" class="form-control" id="imagen_url" name="imagen_url" value="{{ old('imagen_url', $pinata->imagen_url) }}" />
             </div>
 
+            {{-- Selector de Estado (Activo/Inactivo) --}}
+            <div class="form-group">
+                <label for="activo">Estado de la Piñata</label>
+                <select class="form-control" id="activo" name="activo" required>
+                    {{-- Usamos el valor de la base de datos para pre-seleccionar la opción --}}
+                    <option value="1" {{ old('activo', $pinata->activo) == 1 ? 'selected' : '' }}>
+                        🟢 Activo (Visible en la tienda)
+                    </option>
+                    <option value="0" {{ old('activo', $pinata->activo) == 0 ? 'selected' : '' }}>
+                        🔴 Inactivo (Oculto al cliente)
+                    </option>
+                </select>
+                <small class="text-muted">Si la desactivas, no aparecerá en la Landing Page.</small>
+            </div>
+
             <button type="submit" class="btn btn-success">Actualizar Piñata</button>
             <a href="{{ route('pinatas.index') }}" class="btn btn-default">Cancelar</a>
         </form>
