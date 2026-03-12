@@ -45,3 +45,5 @@ Route::get('/miniatura/{filename}', array(
 Route::get('/correo-prueba', [CorreoController::class, 'enviarPrueba']);
 
 Route::resource('usuarios', App\Http\Controllers\UserController::class)->middleware('auth');
+
+Route::resource('resenas', App\Http\Controllers\ResenaController::class)->middleware('auth');

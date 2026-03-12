@@ -43,6 +43,7 @@
                 <li><a class="dropdown-item" href="#">Combos</a></li>
                 <li><a class="dropdown-item" href="#">Personalizadas</a></li>
                 <li><a class="dropdown-item" href="#">Cursos</a></li>
+                <li><a class="dropdown-item" href="/resenas/create">Reseñas</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#">Carrito</a></li>
             </ul>

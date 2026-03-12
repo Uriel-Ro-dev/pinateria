@@ -10,4 +10,9 @@ class compras extends Model
     {
         return $this->belongsTo(User::class, 'usuario_id');
     }
+
+    public function detalles()
+    {
+        return $this->hasMany(DetalleCompra::class, 'compra_id');
+    }
 }
