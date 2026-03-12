@@ -16,7 +16,7 @@ class PinatasController extends Controller
     public function index()
     {
         // Filtramos solo las piñatas donde activo sea 1 (tinyint)
-        $pinatas = pinata::where('activo', 1)->get();
+        $pinatas = pinata::with('asset')->get();
 
         // Retornamos la vista dentro de tu carpeta 'pinateria'
         return view('pinateria.index', compact('pinatas'));

@@ -16,4 +16,10 @@ class pinata extends Model
         'imagen_url',
         'activo'
     ];
+
+    public function asset()
+    {
+        // Una piñata tiene un asset (o multimedia) relacionado
+        return $this->hasOne(Asset::class, 'pinata_id');
+    }
 }

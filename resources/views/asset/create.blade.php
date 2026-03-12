@@ -31,11 +31,23 @@
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label for="pinata_id">Seleccionar Piñata Relacionada</label>
-                        <select name="pinata_id" id="pinata_id" class="form-control select2">
-                            <option value="">-- Selecciona una piñata --</option>
-                            @foreach($pinatas as $pinata)
-                                <option value="{{ $pinata->id }}">{{ $pinata->nombre }} (ID: {{ $pinata->id }})</option>
-                            @endforeach
+                        @if(isset($selected_id))
+                            {{-- Si venimos con un ID fijo, mostramos un input deshabilitado visualmente pero enviamos el valor --}}
+                            <select name="pinata_id" id="pinata_id" class="form-control" style="background-color: #e9ecef; pointer-events: none;">
+                                @foreach($pinatas as $pinata)
+                                    <option value="{{ $pinata->id }}" selected>{{ $pinata->nombre }} (ID: {{ $pinata->id }})</option>
+                                @endforeach
+                            </select>
+                            <small class="text-info">Estás añadiendo multimedia a una piñata específica.</small>
+                        @else
+                            {{-- El select normal por si entran directo al menú de assets --}}
+                            <select name="pinata_id" id="pinata_id" class="form-control select2">
+                                <option value="">-- Selecciona una piñata --</option>
+                                @foreach($pinatas as $pinata)
+                                    <option value="{{ $pinata->id }}">{{ $pinata->nombre }} (ID: {{ $pinata->id }})</option>
+                                @endforeach
+                            </select>
+                        @endif
                         </select>
                     </div>
 

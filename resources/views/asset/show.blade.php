@@ -54,10 +54,19 @@
                     <p class="text-muted">{{ $asset->created_at->format('d/m/Y H:i') }}</p>
                 </div>
                 <div class="card-footer">
-                    <a href="{{ route('asset.index') }}" class="btn btn-secondary btn-block">
-                        <i class="fas fa-arrow-left"></i> Volver a la lista
-                    </a>
-                </div>
+    <a href="{{ route('pinatas.index') }}" class="btn btn-secondary btn-block mb-2">
+        <i class="fas fa-arrow-left"></i> Volver a la lista
+    </a>
+
+    {{-- Botón de Eliminar Multimedia --}}
+    <form action="{{ route('asset.destroy', $asset->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar permanentemente el video y la imagen de esta piñata?');">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger btn-block">
+            <i class="fas fa-trash-alt"></i> Eliminar Multimedia
+        </button>
+    </form>
+</div>
             </div>
         </div>
     </div>

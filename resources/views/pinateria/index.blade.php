@@ -48,6 +48,23 @@
                                 <a href="{{ route('pinatas.edit', $pinata->id) }}" class="btn btn-warning btn-sm">
                                     <i class="fas fa-edit"></i>
                                 </a>
+                                {{-- Botón para Ver Imagen (Nuevo - Abre un Modal) --}}
+                                @if($pinata->asset)
+                                    {{-- usamos el ID del ASSET, no el de la piñata --}}
+                                    <a href="{{ route('asset.show', $pinata->asset->id) }}" class="btn btn-purple btn-sm text-white bg-purple" title="Ver Multimedia">
+                                        <i class="fas fa-play-circle"></i>
+                                    </a>
+                                @else
+                                    {{-- Botón deshabilitado o gris si no hay multimedia aún --}}
+                                    <button class="btn btn-secondary btn-sm" disabled title="Sin multimedia">
+                                        <i class="fas fa-video-slash"></i>
+                                    </button>
+                                @endif
+
+                                {{-- Botón para Subir/Cambiar Imagen (Nuevo - Te lleva a una ruta de edición de imagen) --}}
+                                <a href="{{ route('asset.create', ['pinata_id' => $pinata->id]) }}" class="btn btn-info btn-sm">
+                                    <i class="fas fa-upload"></i>
+                                </a>
                                 <button type="button" class="btn btn-danger btn-sm"
                                     onclick="confirmarBorrado('{{ $pinata->id }}', '{{ $pinata->nombre }}')"
                                     data-toggle="modal" data-target="#deleteModal">

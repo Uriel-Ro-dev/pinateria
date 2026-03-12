@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Asset;
+use App\Models\Pinata;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -22,10 +23,18 @@ class AssetController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        $pinatas = \App\Models\pinata::all();
-        return view('asset.create', compact('pinatas'));
+        $selected_id = $request->query('pinata_id');
+
+        // Si hay un ID seleccionado, buscamos solo esa piñata, si no, todas para el select normal
+        if ($selected_id) {
+            $pinatas = Pinata::where('id', $selected_id)->get();
+        } else {
+            $pinatas = Pinata::all();
+        }
+
+        return view('asset.create', compact('pinatas', 'selected_id'));
     }
 
     /**
@@ -61,7 +70,19 @@ class AssetController extends Controller
            $asset->video_path = $video_path;
        }
        $asset->save();
-       return redirect()->route('asset.index')->with(array(
+
+       if ($image && $asset->id) {
+        // Buscamos la piñata relacionada por el ID fijo que capturamos antes
+        $pinata = Pinata::find($asset->pinata_id);
+
+        if ($pinata) {
+                // Guardamos la referencia: asset/getImage/{nombre_archivo}
+                $pinata->imagen_url = 'asset/getImage/' . $asset->image;
+                $pinata->save(); // Guardamos el cambio en MySQL
+            }
+        }
+
+       return redirect()->route('pinatas.index')->with(array(
            'message' => 'El video demostrativo de la piñata se ha subido correctamente'
        ));
 
@@ -124,6 +145,27 @@ class AssetController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $asset = Asset::findOrFail($id);
+
+        // 1. Borramos los archivos físicos de los discos correspondientes
+        if ($asset->image) {
+            Storage::disk('images')->delete($asset->image);
+        }
+        if ($asset->video_path) {
+            Storage::disk('videos')->delete($asset->video_path);
+        }
+
+        // 2. IMPORTANTE: Limpiar la referencia en la tabla de Piñatas
+        $pinata = \App\Models\Pinata::find($asset->pinata_id);
+        if ($pinata) {
+            $pinata->imagen_url = null; // Dejamos la piñata sin imagen referenciada
+            $pinata->save();
+        }
+
+        // 3. Borramos el registro de la base de datos
+        $asset->delete();
+
+        return redirect()->route('pinatas.index')->with('message', 'Multimedia eliminada y catálogo actualizado correctamente 🍍');
     }
+
 }
