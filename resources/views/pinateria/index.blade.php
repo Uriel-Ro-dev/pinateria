@@ -19,6 +19,9 @@
             <h2>Inventario de Piñatas</h2>
             <hr>
             <p align="right">
+                <a href="{{ route('imprimirInventario') }}" class="btn btn-danger">
+                    <i class="fas fa-file-pdf"></i> Descargar PDF
+                </a>
                 <a href="{{ route('pinatas.create') }}" class="btn btn-success">
                     <i class="fas fa-plus"></i> Agregar Piñata
                 </a>
@@ -95,10 +98,6 @@
 @section('js')
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
-    <script src="https://cdn.datatables.net/buttons/3.1.2/js/dataTables.buttons.js"></script>
-    <script src="https://cdn.datatables.net/buttons/3.1.2/js/buttons.dataTables.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/3.1.2/js/buttons.html5.min.js"></script>
 
     <script>
         // Función para preparar el modal de borrado
@@ -109,17 +108,6 @@
             document.getElementById('btnConfirmarBorrar').href = url;
         }
 
-        $(document).ready(function() {
-            $('#pinatasTable').DataTable({
-                "pageLength": 10,
-                "order": [[1, "asc"]],
-                "language": {
-                    "url": "https://cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json"
-                },
-                responsive: true,
-                dom: 'Bfrtip',
-                buttons: ['copy', 'excel', 'pdf']
-            });
-        });
+
     </script>
 @endsection

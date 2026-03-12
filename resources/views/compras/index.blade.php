@@ -6,6 +6,12 @@
 <div class="card card-outline card-purple shadow">
     <div class="card-header">
         <h3 class="card-title text-purple font-weight-bold">Historial de Ventas </h3>
+        <p align="right">
+                <a href="{{ route('ventas.pdf') }}" class="btn btn-danger">
+                    <i class="fas fa-file-pdf"></i> Descargar PDF
+                </a>
+                <a href="{{ route('home') }}" class="btn btn-primary">Regresar</a>
+            </p>
     </div>
     <div class="card-body">
         <table class="table table-bordered table-striped">
