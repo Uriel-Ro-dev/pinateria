@@ -77,6 +77,53 @@
         </div>
     </div>
 
+    <div class="row">
+    {{-- Tarjeta de Compras/Ventas --}}
+    <div class="col-md-4 mb-4">
+        <div class="card admin-card h-100 shadow-sm">
+            <div class="card-header bg-white border-0 pt-4">
+                <h5 class="text-purple font-weight-bold">💰 Historial de Ventas</h5>
+            </div>
+            <div class="card-body">
+                <p>Monitorea los pedidos realizados, verifica folios de pago y consulta el detalle de cada compra de tus clientes.</p>
+                <a href="{{ route('compras.index') }}" class="btn btn-purple text-white bg-purple">
+                    <i class="fas fa-shopping-cart"></i> Ver Ventas
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {{-- Tarjeta de Reseñas --}}
+    <div class="col-md-4 mb-4">
+        <div class="card admin-card h-100 shadow-sm">
+            <div class="card-header bg-white border-0 pt-4">
+                <h5 class="text-purple font-weight-bold">🌟 Moderación de Reseñas</h5>
+            </div>
+            <div class="card-body">
+                <p>Gestiona la opinión de tus clientes. Revisa las calificaciones de las piñatas y elimina comentarios inapropiados.</p>
+                <a href="{{ route('resenas.index') }}" class="btn btn-purple text-white bg-purple">
+                    <i class="fas fa-star"></i> Moderar Opiniones
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {{-- Tarjeta de Categorías --}}
+    <div class="col-md-4 mb-4">
+        <div class="card admin-card h-100 shadow-sm">
+            <div class="card-header bg-white border-0 pt-4">
+                <h5 class="text-purple font-weight-bold">🏷️ Categorías de Piñatas</h5>
+            </div>
+            <div class="card-body">
+                <p>Organiza tu inventario por tipos (Infantiles, Temporada, Personalizadas) para facilitar la búsqueda a tus clientes.</p>
+                <a href="{{ route('categorias.index') }}" class="btn btn-purple text-white bg-purple">
+                    <i class="fas fa-tags"></i> Gestionar Tipos
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
     @if (session('status'))
         <div class="alert alert-success mt-4 rounded-pill" role="alert">
             {{ session('status') }}

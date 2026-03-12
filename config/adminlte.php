@@ -375,6 +375,13 @@ return [
             ],
         ],
 
+        //sección de compras
+        [
+            'text' => 'Compras',
+            'route'  => 'compras.index',
+            'icon' => 'fas fa-fw fa-shopping-cart',
+        ],
+
         //sección de reseñas
         [
             'text' => 'Reseñas',
@@ -382,7 +389,6 @@ return [
             'icon' => 'fas fa-fw fa-star',
         ],
 
-        
     ],
 
     /*

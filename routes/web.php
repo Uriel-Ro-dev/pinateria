@@ -47,3 +47,5 @@ Route::get('/correo-prueba', [CorreoController::class, 'enviarPrueba']);
 Route::resource('usuarios', App\Http\Controllers\UserController::class)->middleware('auth');
 
 Route::resource('resenas', App\Http\Controllers\ResenaController::class)->middleware('auth');
+
+Route::resource('compras', App\Http\Controllers\CompraController::class)->middleware('auth');
