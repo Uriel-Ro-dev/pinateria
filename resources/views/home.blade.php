@@ -70,7 +70,7 @@
                     <h5 class="text-purple font-weight-bold">👥 Gestión de Usuarios</h5>
                 </div>
                 <div class="card-body">
-                    <p>Revisa la lista de clientes registrados en Zapopan y Jalisco, y gestiona sus roles.</p>
+                    <p>Revisa la lista de clientes registrados, y gestiona sus roles.</p>
                     <a href="{{ url('/usuarios') }}" class="btn btn-pink">Ver Usuarios</a>
                 </div>
             </div>

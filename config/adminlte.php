@@ -63,12 +63,11 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
-    'logo_img_xl' => null,
-    'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Admin Logo',
+    'logo' => '<b>Piñatería Piña</b>', // Texto que aparece junto al logo
+    'logo_img' => 'img/logo.png',      // Ruta de tu imagen en la carpeta public
+    'logo_img_class' => 'brand-image img-circle elevation-3', // Clase para que se vea circular
+    'logo_img_xl' => null,             // Puedes dejarlo en null
+    'logo_img_alt' => 'Piñatería Logo',
 
     /*
     |--------------------------------------------------------------------------
